@@ -1,31 +1,54 @@
+//Technical Dependencies
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const sequelize = require("sequelize");
-const ejs = require("ejs");
 
-const database = require('./database/database');
+//Custom Dependencies
+const globalLogger = require("./helpers/globalLogger");
+
+//Database Configurations
+const database = require("./database/database");
 const relations = require("./database/relations");
+const initializer = require("./database/initializer");
 
+//Main Router
+const mainRouter = require("./routers/mainRouter");
+
+//PORT Configurations
 const PORT = process.env.PORT || 3000;
 
+//Parsing Request Body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/", (req, res, next) => {
-  res.status(200).send("Yoms API Server is Online!");
+//Request Filter and Sanitizer
+app.use((req, res, next) => {
+  next();
 });
 
-database.sync({force:true}).then(
+//Main Router Set
+app.use(mainRouter);
+
+//Database Connector and App Loader
+database.sync().then(
   (result) => {
-    console.log(result);
-    console.log("DB Connected.");
-    app.listen(PORT, () => {
-      console.log("Yoms API Server is Online!");
-    });
+    initializer
+      .createAdmin()
+      .then((admin) => {
+        if (admin != null) {
+           console.log("Admin Online!");
+        }        
+        console.log("DB Connected.");
+        app.listen(PORT, () => {
+          console.log("Yoms API Server is Online!");
+        });
+      })
+      .catch((error) => {
+        console.log("App Crashed!");
+        console.log(error);
+      });
   },
   (err) => {
-    console.log(err);
-    console.log("DB Failed");
+    globalLogger.errorLog("DB Failed to Sync",err)
   }
 );
