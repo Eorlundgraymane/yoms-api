@@ -1,0 +1,19 @@
+{
+  "name": "yoms-api",
+  "version": "0.0.0",
+  "description": "Yoms Bank API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eorlundgraymane/yoms-api.git"
+  },
+  "author": "Eorlundgraymane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eorlundgraymane/yoms-api/issues"
+  },
+  "homepage": "https://github.com/Eorlundgraymane/yoms-api#readme"
+}
