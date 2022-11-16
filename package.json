@@ -4,7 +4,8 @@
   "description": "Yoms Bank API",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server":"nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/Eorlundgraymane/yoms-api/issues"
   },
-  "homepage": "https://github.com/Eorlundgraymane/yoms-api#readme"
+  "homepage": "https://github.com/Eorlundgraymane/yoms-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.6"
+  }
 }
