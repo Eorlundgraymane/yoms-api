@@ -10,11 +10,15 @@ const Account = database.define("account", {
   },
   balance: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    defaultValue: 0,
   },
   status: {
     type: Sequelize.STRING,
-    allowNull: false,
+    defaultValue: "OPEN",
+  },
+  nickname: {
+    type: Sequelize.STRING,
+    defaultValue: "ACCOUNT",
   },
 });
 

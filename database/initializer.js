@@ -14,6 +14,7 @@ exports.createAdmin = () => {
         return admin;
       } else {
         return User.create({
+          id: 1,
           username: username,
           password: password,
         })
