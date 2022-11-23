@@ -15,7 +15,7 @@ const initializer = require("./database/initializer");
 const mainRouter = require("./routers/mainRouter");
 
 //PORT Configurations
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 //Parsing Request Body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 
 //Request Filter and Sanitizer
 app.use((req, res, next) => {
+  console.log(req.url);
   next();
 });
 
