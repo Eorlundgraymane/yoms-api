@@ -29,6 +29,24 @@ exports.createUser = (req, res) => {
         .send(globalLogger.errorLog("Username Already Exists", error));
     });
 };
+exports.getUser = (req, res) => {
+  let username = req.body.username;
+
+  User.findOne({
+    where: { username: username },
+    include: { association: "Accounts", include: [ "Credits","Debits"],  },
+  })
+    .then((user) => {
+      if (user == null) {
+        res.status(403).json(globalLogger.errorLog("User Does not Exist!"));
+      } else {
+        res.status(200).send(user);
+      }
+    })
+    .catch((error) => {
+      res.status(500).json(globalLogger.errorLog("Cannot Fetch User", error));
+    });
+};
 
 exports.deleteUser = (req, res) => {
   let username = req.body.username;
@@ -57,7 +75,6 @@ exports.deleteUser = (req, res) => {
       res.status(403).send(globalLogger.errorLog("User Does Not Exist", error));
     });
 };
-
 exports.openAccount = (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
@@ -115,8 +132,8 @@ exports.closeAccount = (req, res) => {
     .then((user) => {
       user
         .getAccounts({ where: { id: accountId } })
-        .then((accounts) => {          
-          if (accounts.length > 0) {            
+        .then((accounts) => {
+          if (accounts.length > 0) {
             user
               .removeAccount(accounts[0])
               .then((result) => {
@@ -128,7 +145,9 @@ exports.closeAccount = (req, res) => {
                   include: "Accounts",
                 })
                   .then((newuser) => {
-                    res.status(200).json({ message: "Closed Account!", newuser });
+                    res
+                      .status(200)
+                      .json({ message: "Closed Account!", newuser });
                   })
                   .catch((err) => {
                     res
