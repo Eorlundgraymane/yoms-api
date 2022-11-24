@@ -11,7 +11,7 @@ const database = new Sequelize(
   "tpun81wjmbwb3agt",
   {
     dialect: "mysql",
-    host: "	lcpbq9az4jklobvq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    host: "lcpbq9az4jklobvq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
   }
 );
