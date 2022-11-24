@@ -38,13 +38,13 @@ exports.getUser = (req, res) => {
   })
     .then((user) => {
       if (user == null) {
-        res.status(403).json(globalLogger.errorLog("User Does not Exist!"));
+        res.status(403).send(globalLogger.errorLog("User Does not Exist!"));
       } else {
         res.status(200).send(user);
       }
     })
     .catch((error) => {
-      res.status(500).json(globalLogger.errorLog("Cannot Fetch User", error));
+      res.status(500).send(globalLogger.errorLog("Cannot Fetch User", error));
     });
 };
 
