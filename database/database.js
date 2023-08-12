@@ -4,9 +4,9 @@ const dbConnectionString = process.env.JAWSDB_URL;
 if (dbConnectionString != null) {
   const herokuSequelize = new Sequelize(dbConnectionString)
   herokuSequelize.authenticate().then((result) => {
-    console.log("Connection has been established successfully.");
+    console.log("JAWSDB has been established successfully.");
   }).catch((error) => {
-    console.error("Unable to connect to the database: ", error);
+    console.error("Unable to connect to the JAWSDB database: ", error);
   });
 }
 else {
