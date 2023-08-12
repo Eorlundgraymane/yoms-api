@@ -11,6 +11,10 @@ const Transaction = database.define("transaction", {
     type: sequelize.INTEGER,
     allowNull:false    
   },
+  status:{
+    type: sequelize.BOOLEAN,
+    defaultValue: false
+  }
 });
 
 module.exports = Transaction;

@@ -8,12 +8,12 @@ const Account = database.define("account", {
     primaryKey: true,
   },
   name: {
-    type: sequelize.INTEGER,
+    type: sequelize.STRING,
     allowNull: false,
   },
   balance: {
-    type: sequelize.STRING,
-    allowNull: false,
+    type: sequelize.INTEGER,
+    defaultValue:0
   },
   isActive: {
     type: sequelize.BOOLEAN,
