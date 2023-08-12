@@ -7,7 +7,7 @@ const database = require("./database/database");
 const relation = require("./database/relation");
 const masterRouter = require("./routers/masterRouter");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json({ extended: true }));
 
