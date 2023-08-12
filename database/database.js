@@ -8,6 +8,7 @@ if (dbConnectionString != null) {
   }).catch((error) => {
     console.error("Unable to connect to the JAWSDB database: ", error);
   });
+  module.exports = herokuSequelize;
 }
 else {
   const sequelize = new Sequelize("yoms-api", "root", "password", {
