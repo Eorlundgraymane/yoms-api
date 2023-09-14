@@ -7,7 +7,7 @@ const Transaction = require("../models/transaction");
 
 User.hasMany(Account);
 Account.belongsTo(User);
-Account.hasMany(Transaction, { as: "Credit", foreignKey: "CreditorId" });
-Account.hasMany(Transaction, { as: "Debit", foreignKey: "DebtorId" });
-Transaction.belongsTo(Account, { as: "Creditor" });
-Transaction.belongsTo(Account, { as: "Debtor" });
+Account.hasMany(Transaction, { as: "credit", foreignKey: "creditorId" });
+Account.hasMany(Transaction, { as: "debit", foreignKey: "debtorId" });
+Transaction.belongsTo(Account, { as: "creditor" });
+Transaction.belongsTo(Account, { as: "debtor" });

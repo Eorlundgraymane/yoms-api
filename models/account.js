@@ -7,13 +7,14 @@ const Account = database.define("account", {
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  accountName: {
     type: sequelize.STRING,
     allowNull: false,
   },
   balance: {
     type: sequelize.INTEGER,
-    defaultValue:0
+    defaultValue:1000,
+    allowNull:true
   },
   isActive: {
     type: sequelize.BOOLEAN,

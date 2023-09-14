@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const userController = require("../controllers/userController");
+const transactionController = require("../controllers/transactionController");
 
-router.put("/payByUserID", userController.put.transaction.payByUserID);
-router.put("/payByCreds", userController.put.transaction.payByCreds);
+router.get("/getByID",transactionController.get.transaction.byID);
+router.get("/getInfoByID",transactionController.get.transaction.infoByID);
+
+router.put("/payByAccountIDs", transactionController.put.transaction.payByAccountIDs);
+router.put("/revertByID", transactionController.put.transaction.revertByID);
 
 
 module.exports = router;
