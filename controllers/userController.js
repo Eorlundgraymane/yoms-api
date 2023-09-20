@@ -4,6 +4,24 @@ const Transaction = require("../models/transaction");
 
 module.exports.get = {
     user: {
+        infoByCreds: async (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            console.log(req.body);
+            try {
+                let user = await User.findOne({ where: { name: username, password: password } });
+                if (user != null) {
+                    res.send(user);
+                }
+                else {
+                    res.status(500).send("User Not Found!");
+                }
+            }
+            catch (ex) {
+                console.log(ex);
+                res.status(500).send(ex);
+            }
+        },
         infoByID: async (req, res) => {
             let userID = req.body.id;
             try {
