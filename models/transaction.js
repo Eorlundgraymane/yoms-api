@@ -2,16 +2,16 @@ const sequelize = require("sequelize");
 const database = require("../database/database");
 
 const Transaction = database.define("transaction", {
-  id: {
+  ID: {
     type: sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
   amount: {
     type: sequelize.INTEGER,
-    allowNull:false    
+    allowNull: false
   },
-  status:{
+  status: {
     type: sequelize.BOOLEAN,
     defaultValue: false
   }

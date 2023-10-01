@@ -1,10 +1,17 @@
-const express = require("express");
-const app = express();
+const database = require('../database/database');
+const relation = require('../database/relation');
 
-const database = require("../database/database");
-const relation = require("../database/relation");
+module.exports = {
+    devOps: {
+        dbReset: async (success, error) => {
+            try {
+                await database.sync({ force: true });
+                success('DB Reset Succesfully');
+            }
+            catch (err) {
+                error(err);
+            }
 
-module.exports.dbreset = async(req,res) => {
-    await database.sync({force:true});
-    res.send("DB Reset Successfully");
+        }
+    }
 }

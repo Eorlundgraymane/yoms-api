@@ -2,7 +2,7 @@ const sequelize = require("sequelize");
 const database = require("../database/database");
 
 const Account = database.define("account", {
-  id: {
+  ID: {
     type: sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
@@ -13,12 +13,11 @@ const Account = database.define("account", {
   },
   balance: {
     type: sequelize.INTEGER,
-    defaultValue:1000,
-    allowNull:true
+    defaultValue: 1000,
   },
   isActive: {
     type: sequelize.BOOLEAN,
-    defaultValue:true
+    defaultValue: true,
   },
 });
 

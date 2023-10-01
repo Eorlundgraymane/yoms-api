@@ -2,15 +2,15 @@ const sequelize = require("sequelize");
 const database = require("../database/database");
 
 const User = database.define("user", {
-  id: {
+  ID: {
     type: sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  username: {
     type: sequelize.STRING,
     allowNull: false,
-    unique:true
+    unique: true
   },
   password: {
     type: sequelize.STRING,
@@ -18,7 +18,7 @@ const User = database.define("user", {
   },
   isActive: {
     type: sequelize.BOOLEAN,
-    defaultValue:true
+    defaultValue: true
   },
 });
 
