@@ -1,5 +1,5 @@
-const modelController = require('../controllers/modelController');
-let Transaction = require('../models/transaction');
+const modelController = require('../src/controllers/modelController');
+let Transaction = require('../src/models/transaction');
 
 module.exports = {
     get: {

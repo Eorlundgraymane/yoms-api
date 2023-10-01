@@ -1,4 +1,4 @@
-let devOpsController = require('../controllers/devOpsController');
+let devOpsController = require('../src/controllers/devOpsController');
 
 module.exports = {
     put: {

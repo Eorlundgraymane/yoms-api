@@ -1,5 +1,5 @@
-const modelController = require('../controllers/modelController');
-let Account = require('../models/account');
+const modelController = require('../src/controllers/modelController');
+let Account = require('../src/models/account');
 
 module.exports = {
     get: {

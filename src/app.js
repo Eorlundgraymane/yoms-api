@@ -3,9 +3,9 @@ const app = express();
 
 const bodyParser = require("body-parser");
 
-const database = require("../database/database");
-const relation = require("../database/relation");
-const masterRouter = require("../routers/masterRouter");
+const database = require("./database/database");
+const relation = require("./database/relation");
+const masterRouter = require("./routers/masterRouter");
 
 const PORT = process.env.PORT || 3000;
 
