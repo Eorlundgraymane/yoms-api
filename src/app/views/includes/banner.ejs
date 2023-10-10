@@ -1,0 +1,17 @@
+<div class="row d-flex justify-content-between">
+    <div class="col">
+        <h1><a href="/">YOMS</a></h1>
+    </div>
+    <% if(typeof(user)!='undefined' ) {%>
+        <div class="col d-flex">
+            <h1>
+                <%=user.username%>
+            </h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+
+            <h1><a class="link-info" href="/auth/logout">Logout</a></h1>
+
+        </div>
+        <%}%>
+</div>

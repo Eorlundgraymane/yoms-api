@@ -15,7 +15,7 @@ module.exports = {
             let password = user.password;
             let params = { where: { username: username, password: password } };
             console.log(params);
-            modelController.fetch.byParams(User, params, async user => {                
+            modelController.fetch.byParams(User, params, async users => {                
                 req.session.loggedIn = true;          
                 next();
             }, err => {
@@ -35,7 +35,7 @@ module.exports = {
         modelController.create.byParams(User, params, async user => {
             req.user = user;
             req.loggedIn = true;        
-            next();
+            res.redirect('/');
         }, err => {
             req.session.destroy();
             res.redirect('/');
@@ -51,15 +51,17 @@ module.exports = {
             let password = req.body.password;
             let params = { where: { username: username, password: password } };
             console.log(params);
-            modelController.fetch.byParams(User, params, user => {
+            modelController.fetch.byParams(User, params, users => {
+                let user = users[0];
                 req.session.user = user;
                 req.session.loggedIn = true;
                 console.log(req.session);
                 console.log("LOGGING IN");        
                 res.redirect('/');
             }, err => {
-                req.session.destroy();
-                res.redirect('/');
+                console.log("FAILED TO LOG IN");
+                req.session.destroy();                
+                res.redirect('/',);
             });
         }
         

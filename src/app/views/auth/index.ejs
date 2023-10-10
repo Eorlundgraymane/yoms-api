@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOMS</title>
-    <link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/yomStyles.css">
-</head>
-
-<body>
+<%- include('../includes/header.ejs')%>
     <div class="row">
         <div class="col-12">
             <% if(typeof (userMessage) !='undefined' ){%>
@@ -17,35 +6,31 @@
                     <%} %>
         </div>
     </div>
-    <div class="row formrow">
-        <div class="col-6 stdform">
+    <div class="row d-flex justify-content-around">
+        <div class="col-4">
             <fieldset>
                 <legend>Log In</legend>
+                <p><%=userMessage%></p>
                 <form class="form-group" action="/auth/login" , method="POST">
                     <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username">
+                    <input required class="form-control" type="text" name="username" id="loginUN">
                     <label class="form-label" for="username">Password</label>
-                    <input class="form-control" type="password" name="password" id="password">
+                    <input required class="form-control" type="password" name="password" id="loginPW">
                     <button class="form-control btn btn-info" type="submit">Log In</button>
                 </form>
             </fieldset>
-        </div>
-        <div class="col-6 stdform">
+        </div>        
+        <div class="col-4">
             <fieldset>
                 <legend>Sign Up</legend>
                 <form class="form-group" action="/auth/signup" , method="POST">
                     <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username">
+                    <input required class="form-control" type="text" name="username" id="signUpUN">
                     <label class="form-label" for="username">Password</label>
-                    <input class="form-control" type="password" name="password" id="password">
+                    <input required class="form-control" type="password" name="password" id="signUpPW">
                     <button class="form-control btn btn-info" type="submit">Sign Up</button>
                 </form>
             </fieldset>
         </div>
     </div>
-    <script src="/scripts/jquery/jquery.min.js"></script>
-    <script src="/scripts/bootstrap/bootstrap.min.js"></script>
-    <script src="/scripts/yomScript.js"></script>
-</body>
-
-</html>
+    <%- include('../includes/footer.ejs')%>

@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center">
+    <h1>Accounts</h1>
+</div>
+<div class="d-flex">
+    <table class="table table-bordered">
+        <thead>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Pay From</th>
+            <% accounts.forEach(account=> {%>
+                <tr>
+                    <td>
+                        <span><%=account.ID%></span>
+                    </td>
+                    <td>
+                        <%=account.accountName%>
+                    </td>
+                    <td>
+                        <%=account.balance%>
+                    </td>
+                    <td>
+                        <button onclick="getAccounts('<%=account.ID%>')" class="btn btn-sm btn-info" type="button">Pay From</button>
+                    </td>        
+                </tr>
+
+                <%})%>
+        </thead>
+    </table>
+</div>

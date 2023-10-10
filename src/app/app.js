@@ -1,8 +1,6 @@
 const express = require("express");
 const session = require('express-session');
 const app = express();
-
-const ejs = require('ejs');
 const path = require('path');
 
 const bodyParser = require("body-parser");
@@ -12,14 +10,14 @@ const relation = require("../backend/models/relation");
 const masterRouter = require("./routers/masterRouter");
 
 const PORT = process.env.PORT || 3000;
-app.set('view-engine', ejs);
+app.set('view engine', 'ejs');
 app.set('views', 'src/app/views');
 
 app.use(session({
     secret: 'rkaysecret',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 60000 }
+    cookie: { secure: false, maxAge: 600000 }
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));

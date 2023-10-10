@@ -18,7 +18,7 @@ module.exports = {
         },
         byParams : async (Model,params,success,error) => {
             try{      
-                let result = await Model.findOne(params);
+                let result = await Model.findAll(params);
                 if(result == null || result.length <= 0){
                     error(Model.name +' not found');
                 }
