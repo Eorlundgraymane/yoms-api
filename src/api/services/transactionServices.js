@@ -1,5 +1,5 @@
-const modelController = require('../src/controllers/modelController');
-let Transaction = require('../src/models/transaction');
+const modelController = require('../../backend/controllers/modelController');
+let Transaction = require('../../backend/models/transaction');
 
 module.exports = {
     get: {

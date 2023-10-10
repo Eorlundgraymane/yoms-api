@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const accountServices = require('../../../api/accountServices');
+const accountServices = require('../services/accountServices');
 
 router.get('/fetchByID',accountServices.get.fetchByID);
 

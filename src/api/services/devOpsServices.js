@@ -1,4 +1,4 @@
-let devOpsController = require('../src/controllers/devOpsController');
+const modelController = require('../../backend/controllers/devOpsController');
 
 module.exports = {
     put: {

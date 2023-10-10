@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const userAPI = require('./api/userAPI');
-const accountAPI = require('./api/accountAPI');
-const transactionAPI = require('./api/transactionAPI');
-const devOpsAPI = require('./api/devOpsAPI');
+const userAPI = require('./userAPI');
+const accountAPI = require('./accountAPI');
+const transactionAPI = require('./transactionAPI');
+const devOpsAPI = require('./devOpsAPI');
 
 router.use('/user', userAPI);
 router.use('/account', accountAPI);

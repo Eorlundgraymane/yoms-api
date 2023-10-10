@@ -1,5 +1,5 @@
 const database = require('../database/database');
-const relation = require('../database/relation');
+const relation = require('../models/relation');
 
 module.exports = {
     devOps: {

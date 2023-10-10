@@ -5,7 +5,7 @@ module.exports = {
                 console.log(Model);
                 let result = await Model.findByPk(Pk);
                 if(result == null || result.length <= 0){
-                    error(Model.name +' not Found');
+                    error(Model.name +' not found');
                 }
                 else{
                     success(result);
@@ -17,16 +17,16 @@ module.exports = {
             
         },
         byParams : async (Model,params,success,error) => {
-            try{
+            try{      
                 let result = await Model.findOne(params);
                 if(result == null || result.length <= 0){
-                    error(Model.name +' not Found');
+                    error(Model.name +' not found');
                 }
                 else{
                     success(result);
                 }
             }
-            catch(err){
+            catch(err){                
                 error(err);
             }
             
@@ -36,10 +36,11 @@ module.exports = {
         byParams: async (Model,params, success, error) => {
 
             let result = {};
+            console.log(params);
             try {
                 result = await Model.create(params);
                 if (result == null || result.length <= 0) {
-                    error("Failed to Create "+ Model.name);
+                    error("Failed to create "+ Model.name);
                 }
                 else {
                     success(result);
