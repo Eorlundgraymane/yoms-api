@@ -8,4 +8,6 @@ router.post('/fetchByCreds',userServices.post.fetchByCreds);
 
 router.post('/createByCreds',userServices.post.createByCreds);
 
+router.post('/addBeneficiary',userServices.post.addBeneficiary);
+
 module.exports = router;

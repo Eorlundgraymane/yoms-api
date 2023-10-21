@@ -4,9 +4,10 @@ let Transaction = require('../../backend/models/transaction');
 
 module.exports = {
     get: {
-        fetchByID: async (req, res) => {
+        fetchByID: (req, res) => {
             let transactionID = req.body.transactionID;
-            modelController.fetch.byID(Transaction, transactionID, transaction => res.send(transaction), err => res.status(404).send(err))
+            let extended = req.body.extended != null ? req.body.extended : false;
+            modelController.fetch.findByPk(Transaction, transactionID, extended, transaction => res.send(transaction), err => res.status(404).send(err))
         }
     },
     post: {

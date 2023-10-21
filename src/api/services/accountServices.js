@@ -3,14 +3,16 @@ let Account = require('../../backend/models/account');
 
 module.exports = {
     get: {
-        fetchByID: async (req, res) => {
+        fetchByID: (req, res) => {
             let accountID = req.body.accountID;
-            modelController.fetch.byID(Account, accountID, account => res.send(account), err => res.status(404).send(err))
+            let extended = req.body.extended != null ? req.body.extended : false;
+            modelController.fetch.findByPk(Account, accountID, extended, account => res.send(account), err => res.status(404).send(err))
         },
-        fetchByUserID: async (req, res) => {
-            let userID =  req.body.userID;            
+        fetchByUserID: (req, res) => {
+            let userID = req.body.userID;
             let params = { where: { userID: userID } };
-            modelController.fetch.byParams(Account, params, account => res.send(account), err => res.status(404).send(err))
+            let extended = req.body.extended != null ? req.body.extended : false;
+            modelController.fetch.findAll(Account, params, extended, account => res.send(account), err => res.status(404).send(err))
         },
     },
     post: {
