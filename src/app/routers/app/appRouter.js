@@ -1,8 +1,15 @@
-const router = require('express').Router();
-const pageRouter = require('./pageRouter');
 const authRouter = require('./authRouter');
 
-router.use('/auth',authRouter);
-router.use(pageRouter);
+const router = require('express').Router();
+
+router.use(authRouter);
+router.use('/',(req,res) => {
+    if(req.body.isAuth){
+        res.send("<html><h1>APP is Authenticated and Online</h1></html>");
+    }
+    else{
+        res.send("<html><h1>APP is Online</h1></html>");
+    }    
+});
 
 module.exports = router;

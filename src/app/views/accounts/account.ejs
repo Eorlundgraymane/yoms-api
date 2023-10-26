@@ -4,8 +4,12 @@
 <div class="row d-flex justify-content-between">
     <div class="col-6 d-flex justify-content-start">
         <form class="form-group" action="">
-            <label class="form-label" for="accountID">Your Account Number</label>
-            <input class='form-control' type="text" name="accountID" id="accountID" value="<%=account.ID%>" readonly>
+            <label class="form-label" for="accountID">Your Account Number</label>            
+            <select name="accountID" id="accountID" onchange="updateAccountDetails()">
+                <%user.accounts.forEach(acc => {%>
+                    <option value="<%=acc.ID%>" <% acc.ID == account.ID ? %> selected <% : %>><%=acc.ID%> - <%=acc.accountName%></option>    
+                <%})%>            
+            </select>           
             <label for="balance">Balance</label>
             <input class='form-control' type="text" name="balance" id="balance" value="<%=account.balance%>" readonly>
             <label for="accountName">Account Name</label>
