@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
-const userServices = require('../services/userServices');
+const userController = require('../controllers/userController');
 
-router.get('/fetchByID',userServices.get.fetchByID);
+router.get('/fetchByID',userController.get.findByID);
 
-router.post('/fetchByCreds',userServices.post.fetchByCreds);
+router.get('/fetchByCreds',userController.get.findByCreds);
 
-router.post('/createByCreds',userServices.post.createByCreds);
+router.post('/createByCreds',userController.post.createByCreds);
 
-router.post('/addBeneficiary',userServices.post.addBeneficiary);
+router.post('/addBeneficiary',userController.post.addBeneficiary);
 
 module.exports = router;

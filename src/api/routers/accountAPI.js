@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const accountServices = require('../services/accountServices');
+const accountController = require('../controllers/accountController');
 
-router.post('/fetchByID',accountServices.get.fetchByID);
+router.get('/fetchByID',accountController.get.findByID);
 
-router.post('/fetchByUserID',accountServices.get.fetchByUserID);
+router.post('/openAccount',accountController.post.createByParams);
 
-router.post('/openAccount',accountServices.post.openAccount);
+router.post('/pay',accountController.post.pay);
 
 module.exports = router;

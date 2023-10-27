@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const devOpsServices = require('../services/devOpsServices');
+const devOpsController = require('../controllers/devOpsController');
 
-router.put('/dbReset',devOpsServices.put.dbReset);
+router.get('/dbReset', devOpsController.DB.reset);
 
 module.exports = router;
