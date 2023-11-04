@@ -24,6 +24,7 @@ app.use(bodyParser.json({ extended: true }));
 
 app.use('/scripts', express.static(path.join(__dirname, 'public', 'scripts')));
 app.use('/styles', express.static(path.join(__dirname, 'public', 'styles')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 app.use(masterRouter);
 
