@@ -12,10 +12,11 @@ module.exports = {
         params.where = where;
         return await modelController.findAll(Account, params, extended, nested);
     },
-    createByParams: async (userID, accountName) => {
+    createByParams: async (userID, accountName, balance) => {
         let params = {
             userID: userID,
-            accountName: accountName
+            accountName: accountName,
+            balance: balance
         }
         return await modelController.create(Account, params);
     },

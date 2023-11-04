@@ -25,7 +25,8 @@ module.exports = {
         createByParams: async (req, res) => {
             let userID = req.body.userID;
             let accountName = req.body.accountName;
-            let account = await accountServices.createByParams(userID, accountName);
+            let balance = req.body.balance;
+            let account = await accountServices.createByParams(userID, accountName,balance);
             if (account.ID == null)
                 res.status(403);
             res.send(account);
