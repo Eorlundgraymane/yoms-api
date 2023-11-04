@@ -6,6 +6,10 @@ const Beneficiary = database.define("beneficiary", {
     type: sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
+  },
+  nickname: {
+    type: sequelize.STRING,
+    allowNull: false
   }
 });
 

@@ -1,12 +1,13 @@
 const router = require('express').Router();
 
-router.use('/',(req,res,next) => {
-    if(req.body.isAuth){
-        next();
-    }
-    else{
-        res.redirect('/login');
-    }
-});
+const authController = require('../../controllers/authController');
+
+router.get('/login',authController.get.loginPage);
+router.get('/signup',authController.get.signUpPage);
+router.get('/logout',authController.get.logout);
+
+router.post('/login',authController.post.login);
+router.post('/signup',authController.post.signUp);
+
 
 module.exports = router;

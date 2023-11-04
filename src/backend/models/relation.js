@@ -5,9 +5,9 @@ const Transaction = require("./transaction");
 
 User.hasMany(Account);
 User.hasMany(Beneficiary, { as: "beneficiaries" });
-Account.belongsToMany(User, { through: Beneficiary , as:"beneficiaries"});
+Account.belongsToMany(User, { through: Beneficiary, as: "beneficiaries" });
 Account.belongsTo(User, { as: "user" });
-Account.hasMany(Transaction, { as: "credit" });
-Account.hasMany(Transaction, { as: "debit" });
-Transaction.belongsTo(Account, { as: "creditor" });
-Transaction.belongsTo(Account, { as: "debtor" });
+Account.hasMany(Transaction, { as: "credit", foreignKey: "creditorID" });
+Account.hasMany(Transaction, { as: "debit", foreignKey: "debtorID" });
+Transaction.belongsTo(Account, { as: "creditor", foreignKey: "creditorID" });
+Transaction.belongsTo(Account, { as: "debtor", foreignKey: "debtorID" });

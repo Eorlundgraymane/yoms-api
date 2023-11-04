@@ -1,21 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light flex-column">
-    <div class="container-fluid">        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav navbar-nav-scroll">
+        </button> -->
+        <div class="navbar-collapse row d-flex" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-nav-scroll justify-content-around ">
                 <li class="nav-item active">
-                    <button class="btn btn-sm btn-light nav-link" onclick="getDashboard()">Dashboard</button>
+                    <a href="/" class="btn btn-sm btn-light nav-link">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-sm btn-light nav-link" title="Profile coming soon..."
-                        onclick="getProfile()">Profile
-                        (WIP)</button>
+                    <a href="#" class="btn btn-sm btn-light nav-link" title="Profile coming soon...">Profile
+                        (WIP)</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-sm btn-light nav-link" onclick="getAccounts()">Accounts</button>
+                    <a href="/accounts" class="btn btn-sm btn-light nav-link">Accounts</a>
                 </li>
             </ul>
         </div>

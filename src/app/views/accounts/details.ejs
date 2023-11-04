@@ -1,0 +1,60 @@
+<%- include('../includes/header.ejs')%>
+    <div class="h-100 row d-flex flex-column">
+        <div class="col">
+            <div class="mb-auto d-none d-sm-block">
+                <%- include('../includes/navigation.ejs')%>
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex flex-column flex-sm-row">
+            <div id="contentDiv" class="col mb-auto col-sm-4 align-self-center">
+                <form class="form-group" action="/pay" method="post">
+                    <label class="form-label" for="accountID">Account No : </label>
+                    <input required class="form-control" type="text" name="accountID" id="accountID"
+                        value="<%=account.ID%>" readonly>
+                    <label class="form-label" for="accountName">Name : </label>
+                    <input required class="form-control" type="text" name="accountName" id="accountName"
+                        value="<%=account.accountName%>" readonly>
+                    <label class="form-label" for="balance : ">Balance : </label>
+                    <input required class="form-control" type="text" name="balance" id="balance"
+                        value="<%=account.balance%>" readonly>
+                    <br><br>
+                    <label class="form-label" for="creditorID : ">Recipient AccountID : </label>
+                    <select class="form-select" required name="creditorID" id="creditorID">
+                        <% user.beneficiaries.forEach(beneficiary=> { %>
+                            <option value=<%- beneficiary.accountID %>><%= beneficiary.nickname %>
+                            </option>
+                            <% }); %>
+                            <option value="" disabled="disabled">-----Own Accounts-----</option>
+                                <% user.accounts.forEach(userAccount=> { %>
+                                    <%if(userAccount.ID !=account.ID){%>
+                                        <option value=<%- userAccount.ID %>><%= userAccount.accountName %>
+                                        </option>
+                                        <%}%>
+                                            <% }); %>
+                    </select>
+                    <!-- <input required class="form-control" type="text" name="creditorID" id="creditorID"> -->
+                    <label class="form-label" for="amount : ">Amount : </label>
+                    <input required class="form-control" type="text" name="amount" id="amount">
+                    <br><br>
+                    <button type="submit" class="btn btn-light form-control">Send Money -></button>
+                </form>
+            </div>
+            <br>
+            <div class="col mb-auto col-sm-8 d-flex flex-column">
+                <button class="btn btn-light align-content-end" onclick="getStatement('<%=account.ID%>')">View
+                    Statement</button>
+                <br>
+                <div id="statement" style="height: 500px" class="table-responsive overflow-x-hidden">
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <div class="col d-block d-sm-none fixed-bottom">
+            <%- include('../includes/navigation.ejs')%>
+        </div>
+    </div>
+    <%- include('../includes/errorMessage.ejs')%>
+        <%- include('../includes/userMessage.ejs')%>
+            <%- include('../includes/footer.ejs')%>

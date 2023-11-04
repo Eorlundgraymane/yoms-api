@@ -1,0 +1,71 @@
+<%- include('../includes/header.ejs')%>
+    <div class="h-100 row d-flex flex-column align-items-center">
+        <div class="row">
+            <div class="mb-auto d-none d-sm-block">
+                <%- include('../includes/navigation.ejs')%>
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex flex-column">
+            <div class="col">
+                <form action="/beneficiary" method="post">
+                    <div class="row d-flex flex-column">
+                        <div class="col">
+                            <label class="form-label" for="accountID">Beneficiary Account No : </label>
+                        </div>
+                        <div class="col">
+                            <input required class="form-control" type="text" name="accountID" id="accountID">
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="accountID">Beneficiary Nickname : </label>
+                        </div>
+                        <div class="col">
+                            <input required class="form-control" type="text" name="nickname" id="nickname">
+                        </div>
+                        <br>
+                        <div class="col">
+                            <button class="btn btn-light">Add Beneficiary </button>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div id="contentDiv" class="col">
+            <table class="table table-striped">
+                <thead>
+                    <th>Account No</th>
+                    <th>Nickname</th>
+                    <th></th>
+                </thead>
+                <%! beneficiaries.forEach(beneficiary=> {%>
+                    <tr>
+                        <td class="text-center">
+                            <p class="p-1">
+                                <%=beneficiary.accountID%>
+                            </p>
+                        </td>
+                        <td class="text-center">
+                            <p class="p-1">
+                                <%=beneficiary.nickname%>
+                            </p>
+                        </td>
+                        <td>
+                            <p class="p-1">
+                                <a href="/beneficiary/remove/<%=beneficiary.ID%>"></a>
+                            </p>
+                        </td>
+                    </tr>
+                    <%})%>
+            </table>
+        </div>
+    </div>
+    <br><br>
+    <div class="col d-block d-sm-none fixed-bottom">
+        <%- include('../includes/navigation.ejs')%>
+    </div>
+    </div>
+    <%- include('../includes/errorMessage.ejs')%>
+        <%- include('../includes/userMessage.ejs')%>
+            <%- include('../includes/footer.ejs')%>

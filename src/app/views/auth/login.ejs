@@ -1,0 +1,26 @@
+<%- include('../includes/header.ejs')%>
+    <div class="row d-flex flex-column">
+        <div class="col-sm-4 align-self-center">
+            <fieldset>
+                <legend>Log In</legend>
+                <form class="form-group" action="/auth/login" , method="POST">
+                    <label class="form-label" for="username">Username</label>
+                    <input required class="form-control" type="text" name="username" id="loginUN">
+                    <label class="form-label" for="username">Password</label>
+                    <input required class="form-control" type="password" name="password" id="loginPW">
+                    <br>
+                    <button class="form-control btn btn-info" type="submit">Log In</button>
+                </form>
+                <p>
+                    <%if(typeof userMessage !='undefined' ) {%>
+                        <%= userMessage%>
+                            <%}%>
+                </p>
+                <br>
+                <a href="/auth/signup">Don't have an account?</a>
+            </fieldset>
+        </div>
+    </div>
+    <%- include('../includes/errorMessage.ejs')%>
+    <%- include('../includes/userMessage.ejs')%>
+    <%- include('../includes/footer.ejs')%>

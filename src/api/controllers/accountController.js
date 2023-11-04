@@ -5,16 +5,18 @@ module.exports = {
         findByID: async (req, res) => {
             let accountID = req.body.accountID;
             let extended = req.body.extended;
-            let account = await accountServices.findByID(accountID, extended);
-            if(account.ID == null)
+            let nested = req.body.nested;
+            let account = await accountServices.findByID(accountID, extended, nested);
+            if (account.ID == null)
                 res.status(404);
             res.send(account);
         },
         findByUserID: async (req, res) => {
             let userID = req.body.userID;
             let extended = req.body.extended;
-            let account = await accountServices.findByUserID(userID, extended);
-            if(account.ID == null)
+            let nested = req.body.nested;
+            let account = await accountServices.findByUserID(userID, extended, nested);
+            if (account.ID == null)
                 res.status(404);
             res.send(account);
         }
@@ -23,8 +25,8 @@ module.exports = {
         createByParams: async (req, res) => {
             let userID = req.body.userID;
             let accountName = req.body.accountName;
-            let account = await accountServices.createByParams(userID,accountName);
-            if(account.ID == null)
+            let account = await accountServices.createByParams(userID, accountName);
+            if (account.ID == null)
                 res.status(403);
             res.send(account);
         },
@@ -33,9 +35,12 @@ module.exports = {
             let debtorID = req.body.debtorID;
             let amount = req.body.amount;
             let transaction = await accountServices.createTransaction(creditorID, debtorID, amount);
-            if(transaction.ID == null)
-                res.status(403);
-            res.send(transaction);
+            if (transaction.ID == null) {
+                res.status(403).send(transaction.message);
+            }
+            else {
+                res.send(transaction);
+            }
         }
     },
     put: {

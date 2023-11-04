@@ -1,10 +1,10 @@
 const modelController = require('../controllers/modelController');
 const User = require('../models/user');
 module.exports = {
-    findByID: async (id, extended) => {
-        return await modelController.findByPk(User, id, extended)
+    findByID: async (id, extended, nested = false) => {
+        return await modelController.findByPk(User, id, extended, nested)
     },
-    findByCreds: async (username, password, extended = false) => {
+    findByCreds: async (username, password, extended = false, nested = false) => {
         let where = {
             username: username,
             password: password
@@ -12,7 +12,7 @@ module.exports = {
         let params = {};
         params.where = where;
         //return await User.findOne({ where: { username: 'rkay', password: 'pass' }, include: { all: true } })
-        let user = await modelController.findOne(User, params, extended);
+        let user = await modelController.findOne(User, params, extended, nested);
         console.log(user);
         return user;
     },
@@ -23,10 +23,10 @@ module.exports = {
         }
         return await modelController.create(User, params);
     },
-    createBeneficiary: async (userID, accountID) => {
+    createBeneficiary: async (userID, accountID, nickname) => {
         let user = await modelController.findByPk(User, userID, true)
         let benefit = false;
-        if (user.beneficiaries.length > 0) {            
+        if (user.beneficiaries.length > 0) {
             user.beneficiaries.forEach(beneficiary => {
                 if (beneficiary.accountID == accountID) {
                     benefit = true;
@@ -36,7 +36,7 @@ module.exports = {
         if (benefit)
             return 'Beneficiary already exists';
         try {
-            let beneficiary = await user.createBeneficiary({ accountID: accountID });
+            let beneficiary = await user.createBeneficiary({ accountID: accountID, nickname: nickname });
             return beneficiary;
         }
         catch (err) {
