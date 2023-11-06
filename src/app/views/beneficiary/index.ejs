@@ -42,19 +42,13 @@
                 <%! beneficiaries.forEach(beneficiary=> {%>
                     <tr>
                         <td class="text-center">
-                            <p class="p-1">
-                                <%=beneficiary.accountID%>
-                            </p>
+                            <%=beneficiary.accountID%>
                         </td>
                         <td class="text-center">
-                            <p class="p-1">
-                                <%=beneficiary.nickname%>
-                            </p>
+                            <%=beneficiary.nickname%>
                         </td>
                         <td>
-                            <p class="p-1">
-                                <a href="/beneficiary/remove/<%=beneficiary.ID%>"></a>
-                            </p>
+                            <a href="/beneficiary/remove/<%=beneficiary.ID%>"></a>
                         </td>
                     </tr>
                     <%})%>
