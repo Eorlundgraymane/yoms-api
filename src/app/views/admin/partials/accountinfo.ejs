@@ -19,6 +19,14 @@
             <td>
                 Status : <% if(account.isActive){%>Open<%}else{%>Closed<%}%>
             </td>
-        </tr>     
+        </tr>
     </table>
+</div>
+<br>
+<div class="col mb-auto d-flex flex-column">
+    <button class="btn btn-light align-content-end" onclick="getStatement('<%=account.ID%>')">View
+        Statement</button>
+    <br>
+    <div id="statement" style="height: 500px" class="table-responsive overflow-x-hidden">
+    </div>
 </div>

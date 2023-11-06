@@ -39,6 +39,21 @@ module.exports = {
                 params.account = account;
                 res.render("admin/partials/accountinfo.ejs",params);
             }
+        },
+        statement : async(req,res) => {
+            let accountID = req.params[0];
+            let account = await adminServices.get.accountInfo(accountID, true, true);
+            let credits = account.credit;
+            let debits = account.debit;
+            let user = req.session.user;
+            let transactions = [];
+            transactions = await sorter.sortTransactions(accountID, credits, debits);
+            console.log(transactions);
+            let params = {};
+            params.transactions = transactions;
+            params.user = user;
+            console.log(user.beneficiaries);
+            res.render('accounts/partials/statement.ejs', params);
         }
     },
     post: {
