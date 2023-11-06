@@ -1,0 +1,62 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <td>
+                ID : <%=user.ID%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Username : <%=user.username%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Role : <%=user.role%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Status : <% if(user.isActive){%>Active<%}else{%>Inactive<%}%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-dark" onclick="toggleAccountModal(true)">Open Account</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select class="form-select" name="selectedAccount" id="selectedAccount">
+                    <option class="form-control">Select an Account</option>
+                    <%user.accounts.forEach(account=>{%>
+                        <option class="form-control" value=<%=account.ID%>> <%=account.accountName%>
+                        </option>
+                        <%})%>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="account-modal" data-bs-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Enter Account Info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="form-group" action="">
+                <label class="form-label" for="accountName">Account Name</label>
+                <input class="form-control" required type="text" name="accountName" id="accountName">
+                <label class="form-label" for="accountBalance">Account Balance</label>
+                <input class="form-control" required type="text" name="accountBalance" id="accountBalance">                
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="openAccount('<%=user.ID%>')">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -4,12 +4,13 @@ const userAPI = require('./userAPI');
 const accountAPI = require('./accountAPI');
 const transactionAPI = require('./transactionAPI');
 const devOpsAPI = require('./devOpsAPI');
-const authAPI = require('./authAPI');
+const adminAPI = require('./adminAPI');
 
 router.use('/user', userAPI);
 router.use('/account', accountAPI);
 router.use('/devOps', devOpsAPI);
 router.use('/transaction', transactionAPI);
+router.use('/admin', adminAPI);
 router.use('/', (req, res) => {
     res.status(404).send("404 API Not Found");
 });

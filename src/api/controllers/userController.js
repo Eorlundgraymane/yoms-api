@@ -1,4 +1,4 @@
-const userServices = require('../../backend/services/userServices');
+const adminServices = require('../../backend/services/adminServices');
 
 module.exports = {
     get: {
@@ -7,7 +7,7 @@ module.exports = {
             let extended = req.body.extended;
             let nested = req.body.nested;
             let user = await userServices.findByID(userID, extended, nested);
-            if (user.ID == null)
+            if (user == null || user.ID == null)
                 res.status(404);
             res.send(user);
         },
@@ -42,7 +42,7 @@ module.exports = {
         }
     },
     put: {
-
+        
     },
     delete: {
 
