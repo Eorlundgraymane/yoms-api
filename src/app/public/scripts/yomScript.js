@@ -22,7 +22,7 @@ const preventPasting = (e) => {
         e.preventDefault();
     }
 }
-$(document).ready(() => {
+$(() => {
     $('input').map(element => {
         element.oncontextmenu = (e) => { e.preventDefault() }
     })
