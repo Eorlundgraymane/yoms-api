@@ -45,6 +45,9 @@ module.exports = {
                     res.render('auth/login.ejs', params);
                 }
                 else {
+                    if(user.role == 'admin'){
+                     req.session.isAdmin = true;   
+                    }
                     req.session.user = user;
                     req.session.isAuth = true;
                     res.redirect('/');

@@ -9,7 +9,12 @@ module.exports = {
         dashboard: (req, res) => {
             let params = {};
             params.user = req.session.user;
-            res.render('dashboard/index.ejs', params);
+            if (req.session.user.role == 'admin') {
+                res.redirect('/admin');
+            }
+            else {
+                res.render('dashboard/index.ejs', params);
+            }
         },
         accounts: async (req, res) => {
             let user = req.session.user;
@@ -23,7 +28,7 @@ module.exports = {
             console.log(req.params);
             let accountID = req.params[0];
             let account = await accountServices.findByID(accountID, true, true);
-            let user = await userServices.findByID(account.userID,true,true);
+            let user = await userServices.findByID(account.userID, true, true);
             let params = {};
             params.account = account;
             req.session.user = user;

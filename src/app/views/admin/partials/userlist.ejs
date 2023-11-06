@@ -1,0 +1,18 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <th>UserID</th>
+            <th>Username</th>
+        </thead>
+        <%! users.forEach(user=> {%>
+            <tr>
+                <td>
+                    <button class="btn btn-dark" onclick="getUserInfo('<%=user.ID%>')"><%=user.ID%></button>
+                </td>
+                <td>
+                    <%=user.username%>
+                </td>
+            </tr>
+            <%})%>
+    </table>
+</div>
