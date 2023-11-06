@@ -17,21 +17,15 @@
                     <%! accounts.forEach(account=> {%>
                         <tr>
                             <td class="text-center"><a class="btn" href="/account/<%=account.ID%>">
-                                    <p class="p-1">
-                                        <button class="btn btn-dark">
-                                            <%=account.ID%>
-                                        </button>
-                                    </p>
+                                    <button class="btn btn-dark">
+                                        <%=account.ID%>
+                                    </button>
                                 </a> </td>
                             <td class="text-center">
-                                <p class="p-1">
-                                    <%=account.accountName%>
-                                </p>
+                                <%=account.accountName%>
                             </td>
                             <td class="text-center">
-                                <p class="p-1">
-                                    <%=account.balance%>
-                                </p>
+                                <%=account.balance%>
                             </td>
                         </tr>
                         <%})%>

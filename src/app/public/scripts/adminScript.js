@@ -1,5 +1,3 @@
-let accountModal = null;
-
 const getUserlist = () => {
     $.ajax("/admin/userlist", {
         method: "GET",
@@ -25,17 +23,10 @@ const getUserInfo = (id) => {
     });
 }
 
-const toggleAccountModal = (open) => {
-
-    if (accountModal == null) {
-        accountModal = new bootstrap.Modal($("#account-modal"));
-    }
-    if (open) {
-        accountModal.show();
-    }
-    else {
-        accountModal.hide();
-    }
+const closeAccountModal = () => {
+    let accountModalSelector = document.querySelector("#account-modal");
+    let accountModal = bootstrap.Modal.getInstance(accountModalSelector);
+    accountModal.hide();
 }
 
 const openAccount = (id) => {
@@ -47,8 +38,8 @@ const openAccount = (id) => {
         method: "POST",
         data: data,
         success: (data) => {
+            closeAccountModal();
             getUserInfo(id);
-            toggleAccountModal(false);
         }
     }).catch(err => {
         console.log(err);
